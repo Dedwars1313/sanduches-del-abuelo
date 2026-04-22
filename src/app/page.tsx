@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Clock, Medal, Leaf, MapPin, Menu, X, Phone } from "lucide-react";
 
 const WHATSAPP_URL =
@@ -31,7 +32,7 @@ const MENU_ITEMS = [
       "Jamón artesanal marinado 12 horas en adobo secreto de hierbas y especias de la región. Servido en pan de hogaza con salsa de la casa.",
     price: "$18.000",
     badge: "Más Vendido",
-    emoji: "🥪",
+    image: "/images/sanduche-jamon.jpeg",
   },
   {
     name: "La Llanera Auténtica",
@@ -39,7 +40,7 @@ const MENU_ITEMS = [
       "Carne a la llanera preparada más de 20 horas con técnica tradicional transmitida de generación en generación. El sabor genuino de los llanos.",
     price: "$22.000",
     badge: "Especial",
-    emoji: "🥩",
+    image: "/images/sanduche-llanera.jpeg",
   },
   {
     name: "El Combinado del Abuelo",
@@ -47,7 +48,7 @@ const MENU_ITEMS = [
       "Lo mejor de dos mundos: jamón adobado y carne llanera juntos en un pan. Para los que no quieren elegir entre la tradición y el sabor.",
     price: "$26.000",
     badge: null,
-    emoji: "🫕",
+    image: "/images/sanduche-bondiola.jpeg",
   },
 ];
 
@@ -248,16 +249,16 @@ export default function SanduchesDelAbuelo() {
                 key={item.name}
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-brand-wood/8"
               >
-                <div
-                  className="h-44 flex items-center justify-center relative"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #432818 0%, #7a3e1a 60%, #a0541f 100%)",
-                  }}
-                >
-                  <span className="text-6xl drop-shadow-lg">{item.emoji}</span>
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                   {item.badge && (
-                    <span className="absolute top-3 right-3 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                    <span className="absolute top-3 right-3 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10">
                       {item.badge}
                     </span>
                   )}
