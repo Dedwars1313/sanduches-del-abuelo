@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Clock, Medal, Leaf, MapPin, Menu, X, Phone } from "lucide-react";
 
@@ -54,6 +54,13 @@ const MENU_ITEMS = [
 
 export default function SanduchesDelAbuelo() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.7;
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-brand-cream">
@@ -138,26 +145,28 @@ export default function SanduchesDelAbuelo() {
         )}
       </nav>
 
-      {/* ── HERO SECTION ── */}
+      {/* ── VIDEO BANNER ── */}
+      <section id="inicio" className="w-full h-[60vh] overflow-hidden">
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src="/videos/sanduche-banner-hero.mp4"
+          muted
+          autoPlay
+          loop
+          playsInline
+        />
+      </section>
+
+      {/* ── HERO TEXT ── */}
       <section
-        id="inicio"
-        className="relative min-h-[92vh] flex items-center justify-center overflow-hidden"
+        className="flex items-center justify-center py-20 px-4 sm:px-6"
         style={{
           background:
             "linear-gradient(135deg, #0d0602 0%, #2a1509 30%, #432818 55%, #7a3e1a 78%, #F26419 100%)",
         }}
       >
-        {/* Glow accents */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse at 20% 50%, #F26419 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, #FFF8F0 0%, transparent 45%)",
-          }}
-        />
-        <div className="absolute inset-0 bg-black/25" />
-
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto py-20">
+        <div className="text-center max-w-4xl mx-auto">
           <p className="text-brand-orange text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase mb-5">
             Funza, Cundinamarca · Desde 1974
           </p>
@@ -194,13 +203,6 @@ export default function SanduchesDelAbuelo() {
             >
               Ver el Menú
             </a>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-60">
-          <div className="w-6 h-10 border-2 border-brand-cream/40 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-2.5 bg-brand-cream/40 rounded-full" />
           </div>
         </div>
       </section>
