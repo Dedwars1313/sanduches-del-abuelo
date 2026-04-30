@@ -146,15 +146,32 @@ export default function SanduchesDelAbuelo() {
       </nav>
 
       {/* ── VIDEO BANNER ── */}
-      <section id="inicio" className="w-full h-[60vh] overflow-hidden">
+      <section id="inicio" className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden">
         <video
           ref={videoRef}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
           src="/videos/sanduche-banner-hero.mp4"
           muted
           autoPlay
           loop
           playsInline
+        />
+        {/* Dot-pattern overlay for cinematic texture */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(0,0,0,0.45) 1px, transparent 1px)",
+            backgroundSize: "3px 3px",
+          }}
+        />
+        {/* Subtle vignette darkening edges */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%)",
+          }}
         />
       </section>
 
