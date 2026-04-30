@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Clock, Medal, Leaf, MapPin, Menu, X, Phone } from "lucide-react";
 
 const WHATSAPP_URL =
@@ -52,7 +53,7 @@ const MENU_ITEMS = [
   },
 ];
 
-export default function SanduchesDelAbuelo() {
+export default function SánguchesDelAbuelo() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -68,17 +69,24 @@ export default function SanduchesDelAbuelo() {
       <nav className="sticky top-0 z-50 bg-brand-wood/95 backdrop-blur-md shadow-lg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <a href="#inicio" className="flex items-center gap-2.5">
-              <span className="text-2xl">🥪</span>
+            <Link href="/" className="flex items-center gap-2.5 pl-2">
+              <Image
+                src="/images/logo-sanduche-1.jpeg"
+                alt="Sánguches del Abuelo"
+                width={45}
+                height={45}
+                className="h-[45px] w-auto rounded-full"
+                priority
+              />
               <div className="leading-tight">
                 <p className="text-brand-cream font-bold text-sm sm:text-base leading-none">
-                  Sanduches
+                  Sánguches
                 </p>
                 <p className="text-brand-orange text-[10px] font-semibold tracking-[0.25em] uppercase">
                   del Abuelo
                 </p>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-8">
@@ -257,7 +265,7 @@ export default function SanduchesDelAbuelo() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-wood"
               style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
             >
-              Nuestros Sanduches
+              Nuestros Sánguches
             </h2>
             <div className="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full" />
           </div>
@@ -420,7 +428,7 @@ export default function SanduchesDelAbuelo() {
                 <span className="text-2xl">🥪</span>
                 <div>
                   <p className="text-brand-cream font-bold text-sm">
-                    Sanduches del Abuelo
+                    Sánguches del Abuelo
                   </p>
                   <p className="text-brand-orange text-xs">Desde 1974</p>
                 </div>
@@ -466,7 +474,7 @@ export default function SanduchesDelAbuelo() {
           </div>
 
           <div className="border-t border-brand-cream/10 pt-6 text-center text-xs text-brand-cream/30">
-            © {new Date().getFullYear()} Sanduches del Abuelo · Funza,
+            © {new Date().getFullYear()} Sánguches del Abuelo · Funza,
             Cundinamarca · Hecho con ❤️ y 50 años de tradición
           </div>
         </div>
